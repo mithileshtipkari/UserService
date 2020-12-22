@@ -62,8 +62,10 @@ public class UserController {
         try{
             users = userService.findByDepartment(dept);
         } catch (Exception ex){
-            System.out.println("Exception in userByCity -"+ ex.getMessage());
+            System.out.println("Exception in userByDepartment -"+ ex.getMessage());
         }
         return "Max. number of employees belonging to department " + dept + " is - " + users.size();
     }
+    
+    
 }
