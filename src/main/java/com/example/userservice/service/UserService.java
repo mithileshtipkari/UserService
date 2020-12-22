@@ -35,4 +35,8 @@ public class UserService {
     public List<User> findByDepartment(String dept){
         return userRepository.findByDepartment(dept);
     }
+    
+    public User getOne(long id){
+        return userRepository.getOne(id);
+    }
 }

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -67,5 +68,16 @@ public class UserController {
         return "Max. number of employees belonging to department " + dept + " is - " + users.size();
     }
     
-    
+    @PutMapping("/updateUser/{id}")
+    public User updateUser(@PathVariable long id, User user){
+        User updatedUser = new User();
+        try{
+            user.setId(id);
+            userService.saveUser(user);
+            updatedUser = userService.getOne(id);
+        }catch(Exception ex){
+            System.out.println("Exeption in updateUser - "+ ex.getMessage());
+        }
+        return updatedUser;
+    }
 }
