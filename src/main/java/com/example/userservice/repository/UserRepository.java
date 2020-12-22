@@ -17,4 +17,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
     public List<User> findByCity(String city);
+    public List<User> findByDepartment(String dept);
 }

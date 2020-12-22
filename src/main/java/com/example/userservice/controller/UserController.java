@@ -55,4 +55,15 @@ public class UserController {
         }
         return "Max. number of employees for city " + city + " is - " + users.size();
     }
+    
+    @GetMapping("/userByDepartment/{dept}")
+    public String userByDept(@PathVariable String dept){
+        List<User> users = new ArrayList<>();
+        try{
+            users = userService.findByDepartment(dept);
+        } catch (Exception ex){
+            System.out.println("Exception in userByCity -"+ ex.getMessage());
+        }
+        return "Max. number of employees belonging to department " + dept + " is - " + users.size();
+    }
 }

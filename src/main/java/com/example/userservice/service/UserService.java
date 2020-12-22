@@ -31,4 +31,8 @@ public class UserService {
     public List<User> findByCity(String city){
         return userRepository.findByCity(city);
     }
+    
+    public List<User> findByDepartment(String dept){
+        return userRepository.findByDepartment(dept);
+    }
 }
