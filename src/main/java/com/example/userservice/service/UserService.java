@@ -27,4 +27,8 @@ public class UserService {
     public void saveUser(User user){
         userRepository.save(user);
     }
+    
+    public List<User> findByCity(String city){
+        return userRepository.findByCity(city);
+    }
 }

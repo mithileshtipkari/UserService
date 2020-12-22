@@ -7,9 +7,12 @@ package com.example.userservice.controller;
 
 import com.example.userservice.model.User;
 import com.example.userservice.service.UserService;
+import java.util.ArrayList;
 import java.util.List;
+import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,5 +43,16 @@ public class UserController {
     public void saveUser(User user){
 //        System.out.println("got user -"+ user.toString());
         userService.saveUser(user);
+    }
+    
+    @GetMapping("/userByCity/{city}")
+    public String userByCity(@PathVariable String city){
+        List<User> users = new ArrayList<>();
+        try{
+            users = userService.findByCity(city);
+        } catch (Exception ex){
+            System.out.println("Exception in userByCity -"+ ex.getMessage());
+        }
+        return "Max. number of employees for city " + city + " is - " + users.size();
     }
 }
